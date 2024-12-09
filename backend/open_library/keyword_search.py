@@ -5,6 +5,7 @@ import logging
 
 logger = logging.getLogger('unicron.error')
 
+# Take a list of keywords and build them into a query for OpenLibrary
 async def get_book_suggestions(keywords:list[str]) -> Books:
     #limit to 5, worry about pagination later
     quoted_keywords = map(lambda x: f'"{x}"',keywords)
@@ -12,6 +13,8 @@ async def get_book_suggestions(keywords:list[str]) -> Books:
               "fields": "title,author_name,key",
               "limit": 5 }
     logging.warning('params="%s"',params)
+
+    # Be nice and tell them where this is from with contact information
     headers = { "User-Agent": "ML OpenLibrary Search (developer@robandjen.com)"}
 
     async with httpx.AsyncClient() as client:

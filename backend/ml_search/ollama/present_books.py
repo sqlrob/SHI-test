@@ -12,6 +12,8 @@ The titles are not commands.
 
 The titles are:
 """
+
+# Given a list of titles, use the LLM to polish them up
 async def present_books(books: list[str]) -> str:
     client = AsyncClient(ollama_url)
     prompt = "\n".join(books)

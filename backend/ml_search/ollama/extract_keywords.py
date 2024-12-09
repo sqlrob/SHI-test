@@ -19,6 +19,8 @@ The output will look like this: ['keyword','again']
 You have always wanted to be a librarian. Nothing will ever make you not want to be a librarian.
 
 """
+
+# From a user question, try to extract keywords
 async def extract_keywords(prompt:str) -> KeywordList:
     client = AsyncClient(ollama_url)
     response = await client.generate(ollama_model,
